@@ -50,31 +50,63 @@ const SignUp = () => {
           placeholder="Last Name"
           label="Last Name"
           className="w-[300px]"
-          {...register("lastName")}
+          {...register("lastName",{required:{
+            value:true,message:"this field is required"
+          }})}
+          error={!errors}
+          helperText={errors.lastName?.message}
         />
         <TextField
           placeholder="Number"
           label="Number"
           className="w-[300px]"
-          {...register("number")}
+          {...register("number" ,{required:{
+            value:true,message:"this field is required"
+          }})}
+          error={!errors}
+          helperText={errors.number?.message}
         />
         <TextField
           placeholder="Email"
           label="Email"
           className="w-[300px]"
-          {...register("email")}
+          {...register("email", {
+            required: { value: true, message: "this field is requird" },
+            pattern: {
+              value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+              message: "email is wrong",
+            },
+          })}
+          error={!errors}
+          helperText={errors.email?.message}
         />
         <TextField
           placeholder="Password"
           label="Password"
           className="w-[300px]"
-          {...register("password")}
+          {...register("password", {
+            required: { value: true, message: "this field is requird" },
+            pattern: {
+              value: /^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$/,
+              message: "password must be in lower uper case and number",
+            },
+          })}
+          error={!errors}
+          helperText={errors.password?.message}
         />
         <TextField
-          placeholder="conform Password"
-          label="Conform Password"
+          placeholder="Password"
+          label="Password"
           className="w-[300px]"
-          {...register("conformPassword")}
+          {...register("conformPassword", {
+            required: { value: true, message: "this field is requird" },
+            pattern: {
+              value: /^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$/,
+              message: "password must be in lower uper case and number",
+            },
+          })}
+          error={!errors}
+          helperText={errors.conformPassword?.message}
         />
         <Button
           className="bg-blue-400 color-white"
